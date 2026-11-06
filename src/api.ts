@@ -48,7 +48,7 @@ export async function restoreImage(id: string): Promise<void> {
 
 export async function signedUrl(path: string): Promise<string> {
   const res = await supabase.storage.from('images').createSignedUrl(path, 3600);
-  return check(res).signedUrl;
+  return (check(res) as { signedUrl: string }).signedUrl;
 }
 
 /** Fetches rows by id and returns them in the order of `ids`. */

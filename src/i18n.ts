@@ -25,6 +25,8 @@ const strings: Record<Lang, Record<string, string>> = {
     agent_quota: 'تم استهلاك الحصة المجانية للمساعد، حاول لاحقاً.',
     pending: 'قيد الفهرسة',
     upload_failed: 'تعذّر رفع بعض الملفات',
+    agent_demo: 'المساعد الذكي غير متاح في الوضع التجريبي (يحتاج Supabase وGemini).',
+    demo_banner: 'وضع تجريبي: الصور تُحفظ في متصفحك فقط.',
     language: 'English',
   },
   en: {
@@ -51,6 +53,8 @@ const strings: Record<Lang, Record<string, string>> = {
     agent_quota: 'The assistant free quota is used up, try again later.',
     pending: 'Indexing',
     upload_failed: 'Some files could not be uploaded',
+    agent_demo: 'The assistant is not available in demo mode (needs Supabase and Gemini).',
+    demo_banner: 'Demo mode: images are stored in this browser only.',
     language: 'العربية',
   },
 };

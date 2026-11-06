@@ -21,4 +21,15 @@ describe('login screen', () => {
     await new Promise((r) => setTimeout(r, 0));
     expect(form.querySelector('.error')!.textContent).toBe('bad creds');
   });
+
+  it('names the backend host when the network request fails', async () => {
+    const auth = await import('../src/auth');
+    (auth.signIn as any).mockRejectedValueOnce(new Error('Failed to fetch'));
+    setLang('en');
+    const form = renderLogin(() => {});
+    (form.querySelector('button[type=submit]') as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r, 0));
+    expect(form.querySelector('.error')!.textContent).toMatch(/^Failed to fetch — .+/);
+    expect(form.textContent).toContain('Backend:');
+  });
 });

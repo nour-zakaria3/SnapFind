@@ -1,6 +1,7 @@
 import './styles.css';
 import { currentUserId, signOut } from './auth';
 import { getLang, loadSavedLang, setLang, t } from './i18n';
+import { isDemo } from './supabase';
 import { el } from './ui/dom';
 import { renderGallery } from './ui/gallery';
 import { renderLogin } from './ui/login';
@@ -24,7 +25,7 @@ async function render(): Promise<void> {
   }
   const out = el('button', { class: 'secondary', onclick: async () => { await signOut(); void render(); } }, t('logout'));
   const content = el('main');
-  app.append(el('div', { class: 'bar' }, toggle, out), content);
+  app.append(el('div', { class: 'bar' }, toggle, ...(isDemo ? [el('span', { class: 'muted' }, t('demo_banner'))] : [out])), content);
   await renderGallery(content);
 }
 

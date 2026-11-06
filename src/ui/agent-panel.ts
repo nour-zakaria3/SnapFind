@@ -23,7 +23,7 @@ export function renderAgentPanel(onChanged: () => Promise<void>): HTMLElement {
       say('…');
       const res = await requestPlan(input.value);
       if ('error' in res) {
-        say(res.error === 'quota' ? t('agent_quota') : `${res.error}${res.reason ? `: ${res.reason}` : ''}`, 'error');
+        say(res.error === 'quota' ? t('agent_quota') : res.error === 'demo' ? t('agent_demo') : `${res.error}${res.reason ? `: ${res.reason}` : ''}`, 'error');
         return;
       }
       if (res.question) { say(res.question); return; }

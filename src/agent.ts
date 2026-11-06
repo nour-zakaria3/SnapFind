@@ -6,7 +6,7 @@ export type { Operation };
 
 export type PlanResponse =
   | { ops: Operation[]; question?: string }
-  | { error: 'quota' | 'failed' | 'invalid_plan'; reason?: string };
+  | { error: 'quota' | 'failed' | 'invalid_plan' | 'demo'; reason?: string };
 
 export async function requestPlan(command: string): Promise<PlanResponse> {
   const res = await callAgent<PlanResponse>({ action: 'plan', command });
